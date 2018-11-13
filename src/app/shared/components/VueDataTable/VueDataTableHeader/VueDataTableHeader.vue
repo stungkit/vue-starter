@@ -1,25 +1,29 @@
 <template>
-  <div :class="$style.vueDataTableHeader">
-    <div v-for="(column, idx) in columns" v-if="column.visible"
-         :key="idx"
-         :class="$style.column"
-         :style="{flexBasis: `${columnWidth}`}"
-         @click="onClick(column)">
+  <thead :class="$style.vueDataTableHeader">
+  <tr>
+    <th v-for="(column, idx) in columns" v-if="column.visible"
+        :key="idx"
+        :class="$style.column"
+        :style="{width: `${columnWidth}`}"
+        @click="onClick(column)">
 
       {{ column.title }}
 
-      <vue-icon-sort v-if="!sortKey && !isActive(column.sortKey)" />
-      <vue-icon-sort-up v-if="isActive(column.sortKey) && sortDirection === 'asc'" />
-      <vue-icon-sort-down v-if="isActive(column.sortKey) && sortDirection === 'desc'" />
-    </div>
-  </div>
+      <div :class="$style.icons" v-if="column.sortable">
+        <vue-icon-sort v-if="!sortKey && !isActive(column.sortKey)" />
+        <vue-icon-sort-up v-if="isActive(column.sortKey) && sortDirection === 'asc'" />
+        <vue-icon-sort-down v-if="isActive(column.sortKey) && sortDirection === 'desc'" />
+      </div>
+    </th>
+  </tr>
+  </thead>
 </template>
 
 <script lang="ts">
   import { IDataTableHeaderItem } from '../IDataTable';
-  import VueIconSort              from '../../icons/VueIconSort/VueIconSort';
-  import VueIconSortUp            from '../../icons/VueIconSortUp/VueIconSortUp';
-  import VueIconSortDown          from '../../icons/VueIconSortDown/VueIconSortDown';
+  import VueIconSort              from '../../icons/VueIconSort/VueIconSort.vue';
+  import VueIconSortUp            from '../../icons/VueIconSortUp/VueIconSortUp.vue';
+  import VueIconSortDown          from '../../icons/VueIconSortDown/VueIconSortDown.vue';
 
   export default {
     name:       'VueDataTableHeader',
@@ -43,7 +47,9 @@
     },
     methods:    {
       onClick(column: IDataTableHeaderItem) {
-        this.$emit('click', column);
+        if (column.sortable) {
+          this.$emit('click', column);
+        }
       },
       isActive(sortKey: string) {
         return sortKey === this.sortKey;
@@ -56,7 +62,6 @@
   @import "../../../styles";
 
   .vueDataTableHeader {
-    display:        flex;
     flex-direction: row;
     box-shadow:     $panel-shadow;
     border:         1px solid $divider-color;
@@ -64,13 +69,18 @@
     font-weight:    700;
     background:     $panel-bg;
     min-width:      600px;
+
+    tr {
+      width:     100%;
+      min-width: 600px;
+    }
   }
 
   .column {
-    flex:         1 1 auto;
     border-right: 1px solid $divider-color;
     padding:      $space-unit $space-unit * 2;
     cursor:       pointer;
+    user-select:  none;
 
     &:hover {
       i {
@@ -84,9 +94,7 @@
     }
 
     i {
-      float:      right;
-      margin-top: $space-unit * 0.5;
-      opacity:    .3;
+      opacity: .3;
     }
 
     :global {
@@ -95,5 +103,11 @@
         opacity: 1;
       }
     }
+  }
+
+  .icons {
+    display: inline-block;
+    width:   $space-unit * 3;
+    float:   right;
   }
 </style>

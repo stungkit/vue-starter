@@ -4,7 +4,7 @@
       <vue-grid-row>
         <vue-grid-item>
           <h1>404</h1>
-          <h3>Site not found!</h3>
+          <h3>Page not found!</h3>
         </vue-grid-item>
       </vue-grid-row>
     </vue-grid>
@@ -12,9 +12,9 @@
 </template>
 
 <script lang="ts">
-  import VueGrid     from '../../shared/components/VueGrid/VueGrid';
-  import VueGridRow  from '../../shared/components/VueGridRow/VueGridRow';
-  import VueGridItem from '../../shared/components/VueGridItem/VueGridItem';
+  import VueGrid     from '../../shared/components/VueGrid/VueGrid.vue';
+  import VueGridRow  from '../../shared/components/VueGridRow/VueGridRow.vue';
+  import VueGridItem from '../../shared/components/VueGridItem/VueGridItem.vue';
 
   export default {
     metaInfo:   {

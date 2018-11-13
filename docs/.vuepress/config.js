@@ -88,8 +88,10 @@ module.exports = {
               children: [
                 'guide/install',
                 'guide/run',
+                'guide/docker',
                 'guide/test',
                 'guide/clean-up',
+                'guide/third-party',
                 'guide/i18n',
                 'guide/cli',
                 'guide/styles',
@@ -105,10 +107,12 @@ module.exports = {
               collapsable: false,
               children: [
                 'docs/style-guide',
+                'docs/pwa',
                 'docs/npm-scripts',
                 'docs/i18n',
                 'docs/redirects',
                 'docs/storybook',
+                'docs/prefetch-and-state-transfer',
               ],
             },
           ],

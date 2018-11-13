@@ -1,7 +1,7 @@
 <template>
   <div
     :class="$style.vueAutocomplete"
-    :aria-expanded="isOpen"
+    :aria-expanded="isOpen ? 'true' : 'false'"
     aria-haspopup="true"
     aria-owns="autocomplete-results"
     role="combobox">
@@ -30,6 +30,7 @@
     <ul
       ref="resultContainer"
       role="listbox"
+      id="autocomplete-results"
       :style="{ height: resultContainerHeight + 'px' }"
       v-show="isOpen === true && isLoading === false">
 
@@ -53,11 +54,11 @@
 
 <script lang="ts">
   import debounce                from 'lodash/debounce';
-  import VueInput                from '../VueInput/VueInput';
-  import { createGUID }          from '../../utils/misc';
   import { IAutocompleteOption } from './IAutocompleteOption';
-  import VueLoader               from '../VueLoader/VueLoader';
-  import VueIconSearch           from '../icons/VueIconSearch/VueIconSearch';
+  import VueInput                from '../VueInput/VueInput.vue';
+  import VueLoader               from '../VueLoader/VueLoader.vue';
+  import VueIconSearch           from '../icons/VueIconSearch/VueIconSearch.vue';
+  import { createGUID }          from '../../utils/misc';
 
   export default {
     name:       'VueAutocomplete',
@@ -243,7 +244,7 @@
       },
     },
     watch:      {
-      options: function (options: IAutocompleteOption[]) {
+      options(options: IAutocompleteOption[]) {
         this.options = options;
         this.isOpen = true;
         this.$nextTick(() => {

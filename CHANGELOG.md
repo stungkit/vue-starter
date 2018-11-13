@@ -1,3 +1,102 @@
+### 1.4.0 (2018-10-27)
+
+##### Chores
+
+*  add new contributors ([6a2c7b9b](https://github.com/devCrossNet/vue-starter/commit/6a2c7b9bfd48eaf418f4352e4b6fa8a54f8eaa0a))
+
+##### Documentation Changes
+
+*  update quick start / install ([997837cb](https://github.com/devCrossNet/vue-starter/commit/997837cb31063649e78786d388ab74e0cef7e707))
+*  fix cleanup docs ([#267](https://github.com/devCrossNet/vue-starter/pull/267)) ([b0d881e4](https://github.com/devCrossNet/vue-starter/commit/b0d881e439a448737e30b91bdf13e14f581f6976))
+* **config:**  fix spelling mistake ([#255](https://github.com/devCrossNet/vue-starter/pull/255)) ([4e6dfc2c](https://github.com/devCrossNet/vue-starter/commit/4e6dfc2c867b344817c805d0a7a2582876b5b0db))
+
+##### New Features
+
+* **vue-input:**  add auto-focus for SPA's ([05996b33](https://github.com/devCrossNet/vue-starter/commit/05996b338bafd966130d82a32980da26022267d2))
+* **vue-tooltip:**  add property to programmatically suppress tooltip ([#263](https://github.com/devCrossNet/vue-starter/pull/263)) ([d625656c](https://github.com/devCrossNet/vue-starter/commit/d625656cdeb5761a8434cccb5852bca44ad88066))
+* **vue-data-table:**  add row to scoped slot; add sortable, fitContent ([#256](https://github.com/devCrossNet/vue-starter/pull/256)) ([fb7ed420](https://github.com/devCrossNet/vue-starter/commit/fb7ed42041f401c6bb68dc586fcff6ae180db3a0))
+* **i18n:**  update portuguese translations ([#253](https://github.com/devCrossNet/vue-starter/pull/253)) ([38655445](https://github.com/devCrossNet/vue-starter/commit/38655445997e50ffcf3758d2b52186286d9cb05f))
+
+##### Bug Fixes
+
+*  module typings ([#271](https://github.com/devCrossNet/vue-starter/pull/271)) ([efe654b3](https://github.com/devCrossNet/vue-starter/commit/efe654b3dca89f2f5c679b8031e85e4683ec4125))
+*  remove performance budget in dev-mode ([a58728e0](https://github.com/devCrossNet/vue-starter/commit/a58728e0d203478f28a3c738931d9dd5327aaccd))
+*  remove empty img alt tag rules ([f5ad9605](https://github.com/devCrossNet/vue-starter/commit/f5ad960518f72978b8b8732f5c40ff3b5bb8aa24))
+* **typings:**  add rootState to ActionContext ([#262](https://github.com/devCrossNet/vue-starter/pull/262)) ([22dcbb36](https://github.com/devCrossNet/vue-starter/commit/22dcbb36bd8c02bc34ef2fd62714f912ce12add0))
+
+##### Performance Improvements
+
+*  add webpack performance budget ([ee944cf2](https://github.com/devCrossNet/vue-starter/commit/ee944cf2f31fb66271e8c4a865343821fa40dc3e))
+
+##### Tests
+
+* **vuex-persist:**  replace localStorage with mock implementation ([#272](https://github.com/devCrossNet/vue-starter/pull/272)) ([0c129940](https://github.com/devCrossNet/vue-starter/commit/0c129940908356cf1b58f3adfe6a652d142834c2))
+
+### 1.3.0 (2018-10-06)
+
+##### Chores
+
+*  add new contributors ([7c42780a](https://github.com/devCrossNet/vue-starter/commit/7c42780abc7b629144d68365989b095cb958f2bf))
+*  catch errors for prefetch in a unified way ([#230](https://github.com/devCrossNet/vue-starter/pull/230)) ([20f959fc](https://github.com/devCrossNet/vue-starter/commit/20f959fc2d530bdb5dc8d38343f3dab87381e01a))
+*  improve 404 page wording ([#228](https://github.com/devCrossNet/vue-starter/pull/228)) ([937e1151](https://github.com/devCrossNet/vue-starter/commit/937e1151df7ad6c556be10d5df7c08a14a2ca00a))
+
+##### Documentation Changes
+
+* **readme:**  add issue-hunt and all-contributors ([#233](https://github.com/devCrossNet/vue-starter/pull/233)) ([2d84ee50](https://github.com/devCrossNet/vue-starter/commit/2d84ee50aca76913b14b85b99922bdacc6d2b50d))
+*  add missing snipped to 3rd party integration guide ([12b18047](https://github.com/devCrossNet/vue-starter/commit/12b18047c9854c08568b7dec7e04f3ce60d97f48))
+
+##### New Features
+
+* **vue-tab-group:**  add is-active property to pre-select tab-item ([#248](https://github.com/devCrossNet/vue-starter/pull/248)) ([0f5f2316](https://github.com/devCrossNet/vue-starter/commit/0f5f23168c4aa43d9ceba1dafb372c2b285ba8c6))
+* **vue-modal:**  emit close event on ESC press ([#247](https://github.com/devCrossNet/vue-starter/pull/247)) ([b38c8401](https://github.com/devCrossNet/vue-starter/commit/b38c84018c70307f41249c7aa042413a88a4603d))
+* **components:**  add Breadcrumb ([#234](https://github.com/devCrossNet/vue-starter/pull/234)) ([ac425a0d](https://github.com/devCrossNet/vue-starter/commit/ac425a0d4db0ad6d0a09855b6614e680d50406dd))
+*  don't change route on 404 ([#229](https://github.com/devCrossNet/vue-starter/pull/229)) ([d00dabb2](https://github.com/devCrossNet/vue-starter/commit/d00dabb2e94e7632a347064632fc28ef3d5f70c9))
+
+##### Refactors
+
+*  improve test setup for connected components ([#246](https://github.com/devCrossNet/vue-starter/pull/246)) ([115d5fad](https://github.com/devCrossNet/vue-starter/commit/115d5fadfa08997e92b894017ff889a6ac36f3af))
+*  add return type for prefetch ([#243](https://github.com/devCrossNet/vue-starter/pull/243)) ([1c15c1bf](https://github.com/devCrossNet/vue-starter/commit/1c15c1bf2ab7143bbd966c66fc6e600e18970852))
+* **dev:**  add type checking and linting ([#238](https://github.com/devCrossNet/vue-starter/pull/238)) ([0db3242e](https://github.com/devCrossNet/vue-starter/commit/0db3242efc8fbd32d960878ef29f811400c54c9a))
+
+##### Tests
+
+* **vue-select:**  add test for disabled property ([#239](https://github.com/devCrossNet/vue-starter/pull/239)) ([907dfd22](https://github.com/devCrossNet/vue-starter/commit/907dfd22275baa3bc91cac8b2cca52985c0bea16))
+
+#### 1.2.2 (2018-09-13)
+
+##### Chores
+
+*  update dependencies ([#224](https://github.com/devCrossNet/vue-starter/pull/224)) ([b5dba93b](https://github.com/devCrossNet/vue-starter/commit/b5dba93b2ab068f9db37ac20b5a76f2791f8d637))
+
+##### Documentation Changes
+
+*  add progressive-web-app section ([#227](https://github.com/devCrossNet/vue-starter/pull/227)) ([3387b957](https://github.com/devCrossNet/vue-starter/commit/3387b9575c48c43aca2abcbf2342b7975871c6d4))
+*  add guide to integrate with 3rd party UI libraries ([#225](https://github.com/devCrossNet/vue-starter/pull/225)) ([8b3357bc](https://github.com/devCrossNet/vue-starter/commit/8b3357bc197e0070a5f219a8b1b21f3e79f6bb37))
+*  add a recommended architecture section ([#222](https://github.com/devCrossNet/vue-starter/pull/222)) ([b7b575b4](https://github.com/devCrossNet/vue-starter/commit/b7b575b425ec1039c84bc02e3cb53766b69db7f2))
+*  add tutorial how to prefetch data on the server side ([#221](https://github.com/devCrossNet/vue-starter/pull/221)) ([9b162bb3](https://github.com/devCrossNet/vue-starter/commit/9b162bb369e7185cc9687492cbe5b66ff831fec2))
+
+##### Bug Fixes
+
+*  dockerfile ([#215](https://github.com/devCrossNet/vue-starter/pull/215)) ([fb3b908b](https://github.com/devCrossNet/vue-starter/commit/fb3b908bc0aacad2c843e566a93634d4287e4f63))
+
+##### Performance Improvements
+
+*  optimize Dockerfile ([d0348a5f](https://github.com/devCrossNet/vue-starter/commit/d0348a5f1968510158f38c2cc61d66fe34ce4c13))
+
+#### 1.2.1 (2018-08-16)
+
+##### Chores
+
+*  update issue templates ([4d52e7ff](https://github.com/devCrossNet/vue-starter/commit/4d52e7ffee6972ca5f291daca948ce16110d360b))
+
+##### Documentation Changes
+
+* **zh-cn:**  add redirects.md ([#206](https://github.com/devCrossNet/vue-starter/pull/206)) ([56490aa3](https://github.com/devCrossNet/vue-starter/commit/56490aa35d6a0a23b3ea073ecdf66cb6d773bcb2))
+
+##### Bug Fixes
+
+*  update engines to match README ([#209](https://github.com/devCrossNet/vue-starter/pull/209)) ([2a139fd9](https://github.com/devCrossNet/vue-starter/commit/2a139fd9d6976ae5ef3277dafca4a5dfed37c9d4))
+
 ### 1.2.0 (2018-08-04)
 
 ##### Documentation Changes
