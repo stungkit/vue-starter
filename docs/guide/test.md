@@ -1,8 +1,8 @@
-# Run the tests for the first time
+# Run the tests
 
 Your app is installed and runs in development mode, but does every component in the app work correctly?
 
-To check if all the features, components, services, etc. work as intended, you should run the tests suite with `npm run test:coverage`.
+To check if all the features, components, services, etc. work as intended, you should run the tests suite with `npm run test`.
 
 You will see something like this:
 
@@ -43,4 +43,5 @@ If you think this is just too much for your project, configure the appropriate t
       }
     },
 ```
+
 :::

@@ -1,4 +1,4 @@
-# Create your first page
+# Create a new Page
 
 To create a new page, you have to add a new module to your application.
 
@@ -6,7 +6,7 @@ To create a new page, you have to add a new module to your application.
 
 A module is an encapsulated piece of domain logic in your application.
 
-###  Use-cases for a module
+### Use-cases for a module
 
 **Dynamic page**: consists of a lot of view logic, at least one route and state-management
 
@@ -19,13 +19,13 @@ A module is an encapsulated piece of domain logic in your application.
 ## Create a module
 
 Let's create a page that is dynamic and has to have stage-management,
-run `npm run g` and you will be asked some questions:
+run `npm run generate` and you will be asked some questions:
 
 ```bash
 ? [PLOP] Please choose a generator. (Use arrow keys)
-  component - Add a single file component 
-❯ module - Add a module with VueX store and routes 
-  connected - Add a VueX connected component 
+  component - Add a single file component
+❯ module - Add a module with VueX store and routes
+  connected - Add a VueX connected component
 
 ```
 
@@ -33,7 +33,7 @@ choose `module` and continue with `enter`:
 
 ```bash
 ? [PLOP] Please choose a generator. module - Add a module with vuex store and routes
-? What should it be called? 
+? What should it be called?
 ```
 
 This will be the name of your module, connected component and route.
@@ -80,3 +80,16 @@ Go to [http://localhost:3000/foo](http://localhost:3000/foo) and you should see 
 ::: tip Does everything work?
 To verify if you didn't break something, run `npm test`.
 :::
+
+## Configuration
+
+To change the paths for the generator CLI, see the following section in the file: `./.vue-starter/config.json`
+
+```js
+  "generators": {
+    "blueprintDirectory": "./.vue-starter/generators",
+    "outputDirectory": "./src/app",
+    "routerFile": "./src/app/router.ts",
+    "stateFile": "./src/app/state.ts"
+  },
+```
