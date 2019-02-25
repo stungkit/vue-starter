@@ -1,20 +1,20 @@
 import { ActionContext, Commit, Dispatch } from 'vuex';
 import MockAdapter from 'axios-mock-adapter';
-import { CounterDefaultState, ICounterState } from './state';
+import { {{ properCase moduleName }}DefaultState, I{{ properCase moduleName }}State } from './state';
 import { IState } from '@/app/state';
-import { CounterActions } from './actions';
+import { {{ properCase moduleName }}Actions } from './actions';
 import { HttpService } from '@/app/shared/services/HttpService/HttpService';
 
-describe('CounterActions', () => {
-  let testContext: ActionContext<ICounterState, IState>;
+describe('{{ properCase moduleName }}Actions', () => {
+  let testContext: ActionContext<I{{ properCase moduleName }}State, IState>;
   let mockAxios: MockAdapter;
 
   beforeEach(() => {
     testContext = {
       dispatch: jest.fn() as Dispatch,
       commit: jest.fn() as Commit,
-      state: CounterDefaultState(),
-    } as ActionContext<ICounterState, IState>;
+      state: {{ properCase moduleName }}DefaultState(),
+    } as ActionContext<I{{ properCase moduleName }}State, IState>;
 
     mockAxios = new MockAdapter(HttpService);
   });
@@ -24,7 +24,7 @@ describe('CounterActions', () => {
 
     mockAxios.onPut('/counter/increment').reply(200, { count: 1337 });
 
-    await CounterActions.increment(testContext);
+    await {{ properCase moduleName }}Actions.increment(testContext);
 
     expect(commitMock.mock.calls[0]).toEqual(['SET_INCREMENT_PENDING', true]);
     expect(commitMock.mock.calls[1]).toEqual(['SET_COUNT', 1337]);
@@ -37,7 +37,7 @@ describe('CounterActions', () => {
     mockAxios.onPut('/counter/increment').reply(500);
 
     try {
-      await CounterActions.increment(testContext);
+      await {{ properCase moduleName }}Actions.increment(testContext);
     } catch (e) {
       expect(commitMock.mock.calls[0]).toEqual(['SET_INCREMENT_PENDING', true]);
       expect(commitMock.mock.calls[1]).toEqual(['SET_INCREMENT_PENDING', false]);
@@ -49,7 +49,7 @@ describe('CounterActions', () => {
 
     mockAxios.onPut('/counter/decrement').reply(200, { count: 1337 });
 
-    await CounterActions.decrement(testContext);
+    await {{ properCase moduleName }}Actions.decrement(testContext);
 
     expect(commitMock.mock.calls[0]).toEqual(['SET_DECREMENT_PENDING', true]);
     expect(commitMock.mock.calls[1]).toEqual(['SET_COUNT', 1337]);
@@ -62,7 +62,7 @@ describe('CounterActions', () => {
     mockAxios.onPut('/counter/decrement').reply(500);
 
     try {
-      await CounterActions.decrement(testContext);
+      await {{ properCase moduleName }}Actions.decrement(testContext);
     } catch (e) {
       expect(commitMock.mock.calls[0]).toEqual(['SET_DECREMENT_PENDING', true]);
       expect(commitMock.mock.calls[1]).toEqual(['SET_DECREMENT_PENDING', false]);
