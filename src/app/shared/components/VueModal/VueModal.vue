@@ -107,10 +107,10 @@ export default {
 
 .vueModal {
   position: fixed;
-  top: $space-unit;
-  left: $space-unit;
-  bottom: $space-unit;
-  right: $space-unit;
+  top: $space-8;
+  left: $space-8;
+  bottom: $space-8;
+  right: $space-8;
   background: $modal-bg;
   z-index: $modal-index;
   box-shadow: $modal-shadow;
@@ -119,7 +119,6 @@ export default {
   -webkit-overflow-scrolling: touch;
 
   @include mediaMin(tabletPortrait) {
-    min-width: $modal-min-width;
     max-width: $modal-max-width;
     max-height: 100%;
     position: fixed;

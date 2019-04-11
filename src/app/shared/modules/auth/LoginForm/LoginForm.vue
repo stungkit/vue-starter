@@ -8,7 +8,6 @@
       id="username"
       name="username"
       type="text"
-      tabindex="1"
       autofocus
       :label="$t('common.username' /* Username */)"
       :placeholder="$t('common.username.placeholder' /* Enter any username */)"
@@ -21,7 +20,6 @@
       id="password"
       name="password"
       type="password"
-      tabindex="2"
       :label="$t('common.password' /* Password */)"
       :placeholder="$t('common.password.placeholder' /* Enter any password */)"
       validation="required|min:6"
@@ -36,9 +34,9 @@
 </template>
 
 <script lang="ts">
-import VueHeadline from '@/app/shared/components/VueHeadline/VueHeadline.vue';
-import VueInput from '@/app/shared/components/VueInput/VueInput.vue';
-import VueButton from '@/app/shared/components/VueButton/VueButton.vue';
+import VueHeadline from '@components/VueHeadline/VueHeadline.vue';
+import VueInput from '@components/VueInput/VueInput.vue';
+import VueButton from '@components/VueButton/VueButton.vue';
 
 export default {
   $_veeValidate: {
@@ -82,5 +80,9 @@ export default {
 
 .loginForm {
   display: block;
+
+  @include mediaMin(tabletPortrait) {
+    min-width: 512px;
+  }
 }
 </style>

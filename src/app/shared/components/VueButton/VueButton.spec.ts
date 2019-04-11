@@ -1,5 +1,6 @@
 import { createLocalVue, mount } from '@vue/test-utils';
 import VueButton from './VueButton.vue';
+import { brandVariations } from '@components/utils';
 
 const localVue = createLocalVue();
 
@@ -47,73 +48,22 @@ describe('VueButton.vue', () => {
       expect(wrapper.emitted().click).toBeFalsy();
     });
 
-    test('should show primary color', () => {
-      const wrapper = mount<any>(VueButton, {
-        localVue,
-        propsData: {
-          color: 'primary',
-        },
-      });
+    test('should render color variations', () => {
+      brandVariations.forEach((variation: string) => {
+        const wrapper = mount<any>(VueButton, {
+          localVue,
+          propsData: {
+            color: variation,
+          },
+        });
+        const actual = wrapper.findAll(`.${variation}`);
+        const expected = 1;
 
-      expect(wrapper.findAll(`.primary`)).toHaveLength(1);
+        expect(actual).toHaveLength(expected);
+      });
     });
 
-    test('should show secondary color', () => {
-      const wrapper = mount<any>(VueButton, {
-        localVue,
-        propsData: {
-          color: 'secondary',
-        },
-      });
-
-      expect(wrapper.findAll(`.secondary`)).toHaveLength(1);
-    });
-
-    test('should show tertiary color', () => {
-      const wrapper = mount<any>(VueButton, {
-        localVue,
-        propsData: {
-          color: 'tertiary',
-        },
-      });
-
-      expect(wrapper.findAll(`.tertiary`)).toHaveLength(1);
-    });
-
-    test('should show danger color', () => {
-      const wrapper = mount<any>(VueButton, {
-        localVue,
-        propsData: {
-          color: 'danger',
-        },
-      });
-
-      expect(wrapper.findAll(`.danger`)).toHaveLength(1);
-    });
-
-    test('should show warning color', () => {
-      const wrapper = mount<any>(VueButton, {
-        localVue,
-        propsData: {
-          color: 'warning',
-        },
-      });
-
-      expect(wrapper.findAll(`.warning`)).toHaveLength(1);
-    });
-
-    test('should show success color', () => {
-      const wrapper = mount<any>(VueButton, {
-        localVue,
-        propsData: {
-          color: 'success',
-        },
-      });
-
-      expect(wrapper.findAll(`.success`)).toHaveLength(1);
-    });
-
-    test('should show outlined color', () => {
+    test('should render outlined color', () => {
       const wrapper = mount<any>(VueButton, {
         localVue,
         propsData: {
@@ -124,7 +74,7 @@ describe('VueButton.vue', () => {
       expect(wrapper.findAll(`.outlined`)).toHaveLength(1);
     });
 
-    test('should show ghost color', () => {
+    test('should render ghost color', () => {
       const wrapper = mount<any>(VueButton, {
         localVue,
         propsData: {
@@ -163,7 +113,8 @@ describe('VueButton.vue', () => {
         stubs: ['router-link'],
       });
       const actual = wrapper.html();
-      const expected = '<router-link-stub event="click" class="button ripple" to="/foo"> <!----></router-link-stub>';
+      const expected =
+        '<router-link-stub event="click" tabindex="0" class="button ripple default" to="/foo"> <!----></router-link-stub>';
 
       expect(actual).toBe(expected);
     });
@@ -180,7 +131,7 @@ describe('VueButton.vue', () => {
       });
       const actual = wrapper.html();
       const expected =
-        '<router-link-stub disabled="true" class="button ripple disabled" to="/foo"> <!----></router-link-stub>';
+        '<router-link-stub disabled="true" tabindex="-1" aria-hidden="true" class="button ripple default disabled" to="/foo"> <!----></router-link-stub>';
 
       expect(actual).toBe(expected);
     });
@@ -194,7 +145,7 @@ describe('VueButton.vue', () => {
         },
       });
       const actual = wrapper.html();
-      const expected = '<a class="button ripple" href="/foo"> <!----></a>';
+      const expected = '<a tabindex="0" class="button ripple default" href="/foo"> <!----></a>';
 
       expect(actual).toBe(expected);
     });

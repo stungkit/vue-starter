@@ -1,4 +1,4 @@
-<template>
+#<template>
   <div :class="cssClasses">
     <svg :class="[$style.circle, 'vueLoaderCircle']" viewBox="25 25 50 50">
       <circle
@@ -15,7 +15,7 @@
 </template>
 
 <script lang="ts">
-import { variationValidator } from '@/app/shared/components/utils';
+import { variationValidator } from '@components/utils';
 
 export default {
   name: 'VueLoader',
@@ -29,6 +29,7 @@ export default {
     color: {
       type: String,
       validator: variationValidator,
+      default: 'default',
     },
   },
   computed: {
@@ -41,9 +42,8 @@ export default {
       if (this.large) {
         classes.push(this.$style.large);
       }
-      if (this.color) {
-        classes.push(this.$style[this.color]);
-      }
+
+      classes.push(this.$style[this.color]);
 
       return classes;
     },
@@ -122,39 +122,11 @@ export default {
   height: $loader-large-size;
 }
 
-.primary {
-  .path {
-    stroke: $loader-primary-color;
-  }
-}
-
-.secondary {
-  .path {
-    stroke: $loader-secondary-color;
-  }
-}
-
-.tertiary {
-  .path {
-    stroke: $loader-tertiary-color;
-  }
-}
-
-.danger {
-  .path {
-    stroke: $loader-danger-color;
-  }
-}
-
-.warning {
-  .path {
-    stroke: $loader-warning-color;
-  }
-}
-
-.success {
-  .path {
-    stroke: $loader-success-color;
+@each $variation, $color in $loader-variations {
+  .#{$variation} {
+    .path {
+      stroke: $color;
+    }
   }
 }
 </style>

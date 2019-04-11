@@ -10,14 +10,14 @@
           <a href="https://github.com/devCrossNet" target="_blank" rel="noopener" aria-label="github profile">
             <vue-icon-github-alt />
           </a>
-          <a href="https://twitter.com/_jwerner_" target="_blank" rel="noopener" aria-label="twitter profile">
+          <a href="https://twitter.com/vuesion1" target="_blank" rel="noopener" aria-label="twitter profile">
             <vue-icon-twitter-square />
           </a>
         </vue-grid-item>
 
         <vue-grid-item>
           <small>
-            <a href="https://github.com/devCrossNet/vue-starter/blob/master/LICENSE" target="_blank" rel="noopener">
+            <a href="https://github.com/vuesion/vuesion/blob/master/LICENSE" target="_blank" rel="noopener">
               MIT License
             </a>
           </small>
@@ -64,7 +64,7 @@ export default {
     height: $font-size-h1;
     width: $font-size-h1;
     fill: $footer-link-color;
-    margin: 0 $space-unit * 2;
+    margin: 0 $space-12;
 
     &:hover {
       fill: $footer-link-hover-color;
@@ -73,7 +73,7 @@ export default {
 
   small {
     display: inline-block;
-    margin: $space-unit * 2 0;
+    margin: $space-12 0;
   }
 
   a {

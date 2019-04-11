@@ -1,6 +1,6 @@
 <template>
   <ul :class="$style.vueBreadcrumb">
-    <li :class="$style.item" v-for="(item, idx) in items">
+    <li :class="$style.item" v-for="(item, idx) in items" :key="idx">
       <router-link :to="item.href" v-if="idx < items.length - 1">{{ item.label }}</router-link>
       <span v-else>{{ item.label }}</span>
     </li>
@@ -23,17 +23,17 @@ export default {
 @import '../../designSystem/variables';
 
 .vueBreadcrumb {
-  padding: 0;
-  margin: 0;
+  padding: $breadcrumb-padding;
+  margin: $breadcrumb-margin;
   list-style: none;
 }
 
 .item {
   display: inline-block;
-  padding: $space-unit 0;
+  padding: $space-8 0;
 
   &:before {
-    padding: $space-unit;
+    padding: $space-8;
     content: $breadcrumb-separator;
   }
 

@@ -10,6 +10,8 @@
     ref="button"
     :style="{ width: actualWidth }"
     :event="!isDisabled && isRouterLink ? 'click' : null"
+    :tabindex="isDisabled ? -1 : 0"
+    :aria-hidden="isDisabled"
   >
     <slot v-if="loading === false" />
     <vue-loader :class="$style.loader" v-if="loading === true" />
@@ -17,8 +19,8 @@
 </template>
 
 <script lang="ts">
-import VueLoader from '@/app/shared/components/VueLoader/VueLoader.vue';
-import { variationValidator } from '@/app/shared/components/utils';
+import VueLoader from '@components/VueLoader/VueLoader.vue';
+import { variationValidator } from '@components/utils';
 
 export default {
   name: 'VueButton',
@@ -26,6 +28,7 @@ export default {
     color: {
       type: String,
       validator: variationValidator,
+      default: 'default',
     },
     disabled: {
       type: Boolean,
@@ -60,9 +63,9 @@ export default {
       if (this.ghost) {
         classes.push(this.$style.ghost);
       }
-      if (this.color) {
-        classes.push(this.$style[this.color]);
-      }
+
+      classes.push(this.$style[this.color]);
+
       if (this.disabled || this.loading) {
         classes.push(this.$style.disabled);
       }
@@ -109,7 +112,7 @@ export default {
   touch-action: manipulation;
   cursor: pointer;
   white-space: nowrap;
-  text-transform: uppercase;
+  text-transform: $button-text-transform;
   min-width: $button-min-width;
   position: relative;
   overflow: hidden;
@@ -137,7 +140,7 @@ export default {
   &.disabled,
   &[disabled],
   fieldset[disabled] & {
-    opacity: 0.6;
+    opacity: $button-disabled-opacity;
     cursor: not-allowed;
     box-shadow: none;
 
@@ -177,110 +180,44 @@ export default {
 }
 
 .loader {
-  position: absolute;
-  left: 50%;
-  margin-left: -($space-unit * 2);
-  top: 0;
+  display: inline-block;
+  position: relative;
+  top: $space-2;
 }
 
-.primary {
-  color: $button-primary-color;
-  background: $button-primary-bg;
-  border: $button-primary-border;
+@each $variation, $values in $button-variations {
+  .#{$variation} {
+    color: map-get($values, 'color');
+    background: map-get($values, 'bg');
+    border: map-get($values, 'border');
 
-  &:hover {
-    background: $button-primary-hover-bg;
-    color: $button-primary-hover-color;
-  }
+    &:hover {
+      background: map-get($values, 'hover-bg');
+      color: map-get($values, 'hover-color');
+      border-color: map-get($values, 'hover-bg');
+    }
 
-  :global {
-    .vueLoaderPath {
-      stroke: $button-primary-color;
+    :global {
+      .vueLoaderPath {
+        stroke: map-get($values, 'color');
+      }
     }
   }
-}
 
-.secondary {
-  color: $button-secondary-color;
-  background: $button-secondary-bg;
-  border: $button-secondary-border;
+  .outlined {
+    &.#{$variation} {
+      color: map-get($values, 'bg');
 
-  &:hover {
-    background: $button-secondary-hover-bg;
-    color: $button-secondary-hover-color;
-  }
+      &:hover {
+        border-color: map-get($values, 'hover-bg');
+        color: map-get($values, 'hover-bg');
+      }
 
-  :global {
-    .vueLoaderPath {
-      stroke: $button-secondary-color;
-    }
-  }
-}
-
-.tertiary {
-  color: $button-tertiary-color;
-  background: $button-tertiary-bg;
-  border: $button-tertiary-border;
-
-  &:hover {
-    background: $button-tertiary-hover-bg;
-    color: $button-tertiary-hover-color;
-  }
-
-  :global {
-    .vueLoaderPath {
-      stroke: $button-tertiary-color;
-    }
-  }
-}
-
-.success {
-  color: $button-success-color;
-  background: $button-success-bg;
-  border: $button-success-border;
-
-  &:hover {
-    background: $button-success-hover-bg;
-    color: $button-success-hover-color;
-  }
-
-  :global {
-    .vueLoaderPath {
-      stroke: $button-success-color;
-    }
-  }
-}
-
-.warning {
-  color: $button-warning-color;
-  background: $button-warning-bg;
-  border: $button-warning-border;
-
-  &:hover {
-    background: $button-warning-hover-bg;
-    color: $button-warning-hover-color;
-  }
-
-  :global {
-    .vueLoaderPath {
-      stroke: $button-warning-color;
-    }
-  }
-}
-
-.danger {
-  color: $button-danger-color;
-  background: $button-danger-bg;
-  border: $button-danger-border;
-
-  &:hover {
-    background: $button-danger-hover-bg;
-    color: $button-danger-hover-color;
-  }
-
-  :global {
-    .vueLoaderPath {
-      stroke: $button-danger-color;
+      :global {
+        .vueLoaderPath {
+          stroke: map-get($values, 'bg');
+        }
+      }
     }
   }
 }
@@ -291,96 +228,6 @@ export default {
 
   &:hover {
     background: transparent;
-  }
-
-  &.primary {
-    color: $button-primary-bg;
-
-    &:hover {
-      border-color: $button-primary-hover-bg;
-      color: $button-primary-hover-bg;
-    }
-
-    :global {
-      .vueLoaderPath {
-        stroke: $button-primary-bg;
-      }
-    }
-  }
-
-  &.secondary {
-    color: $button-secondary-bg;
-
-    &:hover {
-      border-color: $button-secondary-hover-bg;
-      color: $button-secondary-hover-bg;
-    }
-
-    :global {
-      .vueLoaderPath {
-        stroke: $button-secondary-bg;
-      }
-    }
-  }
-
-  &.tertiary {
-    color: $button-tertiary-color;
-
-    &:hover {
-      border-color: $button-tertiary-hover-bg;
-      color: darken($button-tertiary-color, 5%);
-    }
-
-    :global {
-      .vueLoaderPath {
-        stroke: $button-tertiary-bg;
-      }
-    }
-  }
-
-  &.danger {
-    color: $button-danger-bg;
-
-    &:hover {
-      border-color: $button-danger-hover-bg;
-      color: $button-danger-hover-bg;
-    }
-
-    :global {
-      .vueLoaderPath {
-        stroke: $button-danger-bg;
-      }
-    }
-  }
-
-  &.warning {
-    color: $button-warning-bg;
-
-    &:hover {
-      border-color: $button-warning-hover-bg;
-      color: $button-warning-hover-bg;
-    }
-
-    :global {
-      .vueLoaderPath {
-        stroke: $button-warning-bg;
-      }
-    }
-  }
-
-  &.success {
-    color: $button-success-bg;
-
-    &:hover {
-      border-color: $button-success-hover-bg;
-      color: $button-success-hover-bg;
-    }
-
-    :global {
-      .vueLoaderPath {
-        stroke: $button-success-bg;
-      }
-    }
   }
 }
 

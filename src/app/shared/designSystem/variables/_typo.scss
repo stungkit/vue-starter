@@ -1,6 +1,5 @@
-$google-font: 'https://fonts.googleapis.com/css?family=Barlow:100,300,500,700';
-$font-family-headings: 'Barlow', Helvetica, sans-serif;
-$font-family: 'Barlow', Helvetica, sans-serif;
+$font-family-headings: 'Inter', Helvetica, sans-serif;
+$font-family: 'Inter', Helvetica, sans-serif;
 
 /* Font Sizes */
 $font-size-small: 80%;
@@ -13,26 +12,25 @@ $font-size-h5: 1.6rem;
 $font-size-h6: 1.4rem;
 
 /* Font Weights */
-$font-weight-thin: 100;
-$font-weight-regular: 300;
-$font-weight-medium: 500;
-$font-weight-bold: 700;
-$font-weight-h1: $font-weight-medium;
-$font-weight-h2: $font-weight-medium;
-$font-weight-h3: $font-weight-medium;
-$font-weight-h4: $font-weight-medium;
-$font-weight-h5: $font-weight-medium;
-$font-weight-h6: $font-weight-bold;
-$link-font-weight: $font-weight-medium;
+$font-weight-light: 200;
+$font-weight-regular: 400;
+$font-weight-bold: 600;
+$font-weight-h1: $font-weight-regular;
+$font-weight-h2: $font-weight-regular;
+$font-weight-h3: $font-weight-regular;
+$font-weight-h4: $font-weight-regular;
+$font-weight-h5: $font-weight-regular;
+$font-weight-h6: $font-weight-regular;
+$link-font-weight: $font-weight-regular;
 
 /* Line Heights */
-$line-height: $font-size + $space-xs;
-$line-height-h1: $font-size-h1 + $space-xs;
-$line-height-h2: $font-size-h2 + $space-xs;
-$line-height-h3: $font-size-h3 + $space-xs;
-$line-height-h4: $font-size-h4 + $space-xs;
-$line-height-h5: $font-size-h5 + $space-xs;
-$line-height-h6: $font-size-h6 + $space-xs;
+$line-height: $font-size + $space-8;
+$line-height-h1: $font-size-h1 + $space-8;
+$line-height-h2: $font-size-h2 + $space-8;
+$line-height-h3: $font-size-h3 + $space-8;
+$line-height-h4: $font-size-h4 + $space-8;
+$line-height-h5: $font-size-h5 + $space-8;
+$line-height-h6: $font-size-h6 + $space-8;
 
 /* Letter Spacings */
 $letter-spacing: normal;

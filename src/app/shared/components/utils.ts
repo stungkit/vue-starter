@@ -1,3 +1,5 @@
+export const brandVariations = ['default', 'primary', 'secondary', 'success', 'warning', 'danger'];
+
 export const variationValidator = (value: string) => {
-  return ['primary', 'secondary', 'tertiary', 'success', 'warning', 'danger'].indexOf(value) !== -1;
+  return brandVariations.indexOf(value.toLowerCase()) !== -1;
 };

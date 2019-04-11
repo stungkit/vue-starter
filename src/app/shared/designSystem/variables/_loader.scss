@@ -1,10 +1,12 @@
-$loader-size: $space-unit * 4;
-$loader-medium-size: $space-unit * 8;
-$loader-large-size: $space-unit * 16;
+$loader-size: $space-20;
+$loader-medium-size: $space-32;
+$loader-large-size: $space-52;
 
-$loader-primary-color: $brand-primary;
-$loader-secondary-color: $brand-secondary;
-$loader-tertiary-color: $brand-tertiary;
-$loader-danger-color: $brand-danger;
-$loader-warning-color: $brand-warning;
-$loader-success-color: $brand-success;
+$loader-variations: (
+  'default': $brand-default,
+  'primary': $brand-primary,
+  'secondary': $brand-secondary,
+  'success': $brand-success,
+  'warning': $brand-warning,
+  'danger': $brand-danger,
+);

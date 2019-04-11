@@ -81,10 +81,10 @@ export default {
 
 .hamburger {
   position: fixed;
-  top: $space-xs * 1.5;
-  left: $space-md;
-  height: $space-lg;
-  z-index: $modal-index + 2;
+  top: $space-8 * 1.5;
+  left: $space-20;
+  height: $space-32;
+  z-index: $sidebar-index + 1;
   padding: 0;
   display: inline-block;
   cursor: pointer;
@@ -99,8 +99,8 @@ export default {
   background: $sidebar-hamburger-bg;
 
   .box {
-    width: $space-lg;
-    height: $space-lg;
+    width: $space-32;
+    height: $space-32;
     display: inline-block;
     position: relative;
   }
@@ -113,8 +113,8 @@ export default {
     &,
     &::before,
     &::after {
-      width: $space-lg;
-      height: $space-xxs * 0.5;
+      width: $space-32;
+      height: $space-4 * 0.5;
       background: $sidebar-hamburger-color;
       border-radius: 0;
       position: absolute;
@@ -130,11 +130,11 @@ export default {
     }
 
     &::before {
-      top: ($space-unit / 2 + $space-unit / 2) * -1;
+      top: -$space-8;
     }
 
     &::after {
-      bottom: ($space-unit / 2 + $space-unit / 2) * -1;
+      bottom: -$space-8;
     }
 
     transition-duration: 0.075s;
@@ -150,10 +150,18 @@ export default {
   }
 
   &.open {
+    background: $sidebar-hamburger-open-bg;
+
     .inner {
       transform: rotate(45deg);
       transition-delay: 0.12s;
       transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+
+      &,
+      &::before,
+      &::after {
+        background: $sidebar-hamburger-open-color;
+      }
 
       &::before {
         top: 0;

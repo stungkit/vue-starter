@@ -1,13 +1,7 @@
 <template>
   <thead :class="$style.vueDataTableHeader">
     <tr>
-      <th
-        v-for="(column, idx) in columns"
-        v-if="column.visible"
-        :key="idx"
-        :class="$style.column"
-        @click="onClick(column)"
-      >
+      <th v-for="(column, idx) in visibleColumns" :key="idx" :class="$style.column" @click="onClick(column)">
         {{ column.title }}
 
         <div :class="$style.icons" v-if="column.sortable">
@@ -42,6 +36,11 @@ export default {
       required: true,
     },
   },
+  computed: {
+    visibleColumns() {
+      return this.columns.filter((column: IDataTableHeaderItem) => column.visible);
+    },
+  },
   methods: {
     onClick(column: IDataTableHeaderItem) {
       if (column.sortable) {
@@ -61,8 +60,12 @@ export default {
 .vueDataTableHeader {
   border: $data-table-header-border;
   background: $data-table-header-bg;
-  font-weight: $data-table-header-font-weight;
+
   min-width: $data-table-min-width;
+
+  th {
+    font-weight: $data-table-header-font-weight;
+  }
 
   tr {
     width: $data-table-width;
@@ -89,14 +92,13 @@ export default {
 
   i {
     margin: $data-table-header-icon-margin;
-    opacity: $data-table-header-icon-opacity;
     color: $data-table-header-icon-color;
   }
 }
 
 .icons {
   display: inline-block;
-  width: $space-unit * 3;
+  width: $space-12;
   float: right;
 }
 </style>

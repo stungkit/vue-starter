@@ -85,23 +85,20 @@ export default {
 
 .content {
   flex: 1;
-  padding: $space-unit * 2;
+  padding: $space-12;
 }
 
 .button {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex: 0 0 $space-unit * 8;
-  background: $button-secondary-bg;
+  flex: 0 0 $space-52;
+  background: $brand-secondary;
   cursor: pointer;
-
-  i {
-    fill: $button-secondary-color;
-  }
+  color: foreground-color($brand-secondary);
 
   &:hover {
-    background-color: $button-secondary-hover-bg;
+    background-color: darken($brand-secondary, 5%);
   }
 }
 

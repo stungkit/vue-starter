@@ -5,11 +5,15 @@
     <vue-navigation-progress :is-navigating="isNavigating" />
 
     <vue-nav-bar>
-      <vue-button v-if="isAuthenticated === false" color="primary" :class="$style.login" @click="showLoginModal = true">
-        Login Example
+      <router-link slot="middle" to="/">
+        <vue-icon-vuesion :class="$style.logo" />
+      </router-link>
+
+      <vue-button slot="right" v-if="isAuthenticated === false" color="primary" @click="showLoginModal = true">
+        Login
       </vue-button>
 
-      <vue-button v-if="isAuthenticated" color="primary" :class="$style.login" @click="onLogout">
+      <vue-button slot="right" v-if="isAuthenticated" color="primary" @click="onLogout">
         Logout
       </vue-button>
     </vue-nav-bar>
@@ -60,16 +64,14 @@
         </vue-sidebar-group-item>
 
         <vue-sidebar-group-item>
-          <a
-            href="/storybook/?selectedKind=1.%20Design%20System%7C1.%20Design%20System&selectedStory=Intro&full=0&addons=0&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel"
-          >
+          <a href="/storybook/?path=/story/design-system-design-system--intro">
             <vue-icon-book />
             Design System
           </a>
         </vue-sidebar-group-item>
 
         <vue-sidebar-group-item>
-          <a href="/storybook">
+          <a href="/storybook/?path=/story/atoms-badge--badge-variants">
             <vue-icon-puzzle-piece />
             Components
           </a>
@@ -78,14 +80,14 @@
 
       <vue-sidebar-group title="Community">
         <vue-sidebar-group-item>
-          <a href="https://github.com/devCrossNet/vue-starter" target="_blank" rel="noopener">
+          <a href="https://github.com/vuesion/vuesion" target="_blank" rel="noopener">
             <vue-icon-github />
             Github
           </a>
         </vue-sidebar-group-item>
 
         <vue-sidebar-group-item>
-          <a href="https://slack-vue-starter.herokuapp.com/" target="_blank" rel="noopener"> Slack </a>
+          <a href="https://slack-vuesion.herokuapp.com/" target="_blank" rel="noopener"> Slack </a>
         </vue-sidebar-group-item>
 
         <vue-sidebar-group-item>
@@ -93,7 +95,7 @@
         </vue-sidebar-group-item>
 
         <vue-sidebar-group-item>
-          <a href="https://twitter.com/_jwerner_" target="_blank" rel="noopener">
+          <a href="https://twitter.com/vuesion1" target="_blank" rel="noopener">
             <vue-icon-twitter-square />
             Twitter
           </a>
@@ -109,32 +111,35 @@
 
 <script lang="ts">
 import { mapActions, mapGetters } from 'vuex';
-import { loadLocaleAsync } from '../../shared/plugins/i18n/i18n';
-import '../../shared/designSystem/global.scss';
-import VueNavBar from '../../shared/components/VueNavBar/VueNavBar.vue';
-import VueGrid from '../../shared/components/VueGrid/VueGrid.vue';
-import VueGridItem from '../../shared/components/VueGridItem/VueGridItem.vue';
-import VueFooter from '../../shared/components/VueFooter/VueFooter.vue';
-import VueNotificationStack from '../../shared/components/VueNotificationStack/VueNotificationStack.vue';
-import VueCookieConsent from '../../shared/components/VueCookieConsent/VueCookieConsent.vue';
-import VueNavigationProgress from '../../shared/components/VueNavigationProgress/VueNavigationProgress.vue';
-import VueSidebar from '../../shared/components/VueSidebar/VueSidebar.vue';
-import VueSidebarGroup from '../../shared/components/VueSidebar/VueSidebarGroup/VueSidebarGroup.vue';
-import VueSidebarGroupItem from '../../shared/components/VueSidebar/VueSidebarGroupItem/VueSidebarGroupItem.vue';
-import VueIconCode from '../../shared/components/icons/VueIconCode/VueIconCode.vue';
-import VueIconBook from '../../shared/components/icons/VueIconBook/VueIconBook.vue';
-import VueIconHashtag from '../../shared/components/icons/VueIconHashtag/VueIconHashtag.vue';
-import VueIconGithub from '../../shared/components/icons/VueIconGithub/VueIconGithub.vue';
-import VueIconTwitterSquare from '../../shared/components/icons/VueIconTwitterSquare/VueIconTwitterSquare.vue';
-import VueSelect from '../../shared/components/VueSelect/VueSelect.vue';
-import VueIconPuzzlePiece from '../../shared/components/icons/VueIconPuzzlePiece/VueIconPuzzlePiece.vue';
-import VueButton from '@/app/shared/components/VueButton/VueButton.vue';
-import VueModal from '@/app/shared/components/VueModal/VueModal.vue';
-import LoginForm from '@/app/shared/modules/auth/LoginForm/LoginForm.vue';
-import { addNotification } from '@/app/shared/components/VueNotificationStack/utils';
+import { loadLocaleAsync } from '@shared/plugins/i18n/i18n';
+import '@shared/designSystem/global.scss';
+import VueNavBar from '@components/VueNavBar/VueNavBar.vue';
+import VueGrid from '@components/VueGrid/VueGrid.vue';
+import VueGridItem from '@components/VueGridItem/VueGridItem.vue';
+import VueFooter from '@components/VueFooter/VueFooter.vue';
+import VueNotificationStack from '@components/VueNotificationStack/VueNotificationStack.vue';
+import VueCookieConsent from '@components/VueCookieConsent/VueCookieConsent.vue';
+import VueNavigationProgress from '@components/VueNavigationProgress/VueNavigationProgress.vue';
+import VueSidebar from '@components/VueSidebar/VueSidebar.vue';
+import VueSidebarGroup from '@components/VueSidebar/VueSidebarGroup/VueSidebarGroup.vue';
+import VueSidebarGroupItem from '@components/VueSidebar/VueSidebarGroupItem/VueSidebarGroupItem.vue';
+import VueIconCode from '@components/icons/VueIconCode/VueIconCode.vue';
+import VueIconBook from '@components/icons/VueIconBook/VueIconBook.vue';
+import VueIconHashtag from '@components/icons/VueIconHashtag/VueIconHashtag.vue';
+import VueIconGithub from '@components/icons/VueIconGithub/VueIconGithub.vue';
+import VueIconTwitterSquare from '@components/icons/VueIconTwitterSquare/VueIconTwitterSquare.vue';
+import VueSelect from '@components/VueSelect/VueSelect.vue';
+import VueIconPuzzlePiece from '@components/icons/VueIconPuzzlePiece/VueIconPuzzlePiece.vue';
+import VueButton from '@components/VueButton/VueButton.vue';
+import VueModal from '@components/VueModal/VueModal.vue';
+import LoginForm from '@shared/modules/auth/LoginForm/LoginForm.vue';
+import { addNotification } from '@components/VueNotificationStack/utils';
+import VueIconVuesion from '@components/icons/VueIconVuesion/VueIconVuesion.vue';
+
 export default {
   name: 'App',
   components: {
+    VueIconVuesion,
     LoginForm,
     VueModal,
     VueButton,
@@ -236,7 +241,10 @@ export default {
   flex: 1;
 }
 
-.login {
-  float: right;
+.logo {
+  position: relative;
+  top: $space-4;
+  width: $space-24;
+  height: $space-24;
 }
 </style>

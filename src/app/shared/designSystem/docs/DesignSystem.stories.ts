@@ -1,9 +1,11 @@
 /* tslint:disable */
 import { storiesOf } from '@storybook/vue';
 import { withInfo } from 'storybook-addon-vue-info';
-import VueMarkdown from '../../components/VueMarkdown/VueMarkdown.vue';
+import VueMarkdown from '@components/VueMarkdown/VueMarkdown.vue';
+import BrandColors from './components/BrandColors.vue';
+import ColorPalette from './components/ColorPalette.vue';
 
-let story = storiesOf('1. Design System|1. Design System', module) as any;
+let story = storiesOf('Design System|Design System', module) as any;
 
 story.addParameters({ options: { showAddonPanel: false } });
 
@@ -20,9 +22,9 @@ story.add(
     template: `<vue-markdown>
 # Design System
 
-The vue-starter comes with a Design System that you can 100% customize.
+Vuesion comes with a Design System that you can 100% customize.
 
-**_The files for customizing the Design System are located in \`./src/app/shared/styles\`._**
+**_The files for customizing the Design System are located in \`./src/app/shared/design-system\`._**
 
 Design Systems are really complex and the key to a good Design System is
 consistency.
@@ -38,13 +40,13 @@ This Design System is the next step, it is a blueprint that enables you to creat
 Brand or your clients Corporate Identity.
 
 We are aware that not everyone has to implement their own professional Design System.
-If this is the case for you, you might be interested in [integrating a 3rd party UI library](/docs/guide/third-party.html)
+If this is the case for you, you might be interested in [integrating a 3rd party UI library](/docs/tutorials/third-party.html)
 </vue-markdown>
 `,
   })),
 );
 
-story = storiesOf('1. Design System|2. Branding', module) as any;
+story = storiesOf('Design System|Branding', module) as any;
 
 story.addParameters({ options: { showAddonPanel: false } });
 
@@ -55,40 +57,15 @@ story.add(
     source: false,
     propTables: false,
     styles: { propTableHead: { display: 'none' } },
-    propTablesExclude: [VueMarkdown],
+    propTablesExclude: [VueMarkdown, ColorPalette],
   })(() => ({
-    components: { VueMarkdown },
-    template: `<vue-markdown>
-# Color Palette
-
-![color palette](/color-palette.jpg "color palette")
-
-The naming convention of the color palette is structured in the following way
-
-\`Meaning\`-\`ColorIndex\`-\`Shade\` for example \`$primary-1-100\`
-
-following _Meanings_ are included:
-
-- **primary** (Main Colors)
-- **secondary** (Accent Colors)
-- **tertiary** (Utility Colors)
-
-the following _Indices_ are included:
-
-- primary **1-2**
-- secondary **1-5**
-- tertiary **1-5**
-
-and the following _Shades_ are included:
-
-- 100
-- 80
-- 60
-- 40
-- 20
-- 10
-- 5
+    components: { VueMarkdown, ColorPalette },
+    template: `<div>
+<vue-markdown>
+### Color Palette
 </vue-markdown>
+<color-palette />
+</div>
 `,
   })),
 );
@@ -100,60 +77,21 @@ story.add(
     source: false,
     propTables: false,
     styles: { propTableHead: { display: 'none' } },
-    propTablesExclude: [VueMarkdown],
+    propTablesExclude: [VueMarkdown, BrandColors],
   })(() => ({
-    components: { VueMarkdown },
-    template: `<vue-markdown>
+    components: { VueMarkdown, BrandColors },
+    template: `<div>
+<vue-markdown>
 ### Brand Colors
 Every brand color is related to a color of the color palette.
-
-#### Brand Variations
-These are the colors that we use to create different variations of components.
-
-Variation        | Palette Color
------------------|--------------
-brand-primary   | primary-2-100
-brand-secondary | secondary-1-100
-brand-tertiary  | primary-1-020
-brand-danger    | tertiary-1-100
-brand-warn      | tertiary-2-100
-brand-success   | tertiary-3-100
-
-#### Background Colors
-These are the colors that we use for document backgrounds or sections on a page.
-
-Variation                | Palette Color
--------------------------|--------------
-bg-color                 | tertiary-040
-bg-color-variant         | primary-1-010
-bg-color-inverse         | tertiary-020
-bg-color-variant-inverse | primary-1-060
-
-#### Text Colors
-These are the colors that we use for document text or sections on a page.
-
-Variation                    | Palette Color
------------------------------|--------------
-text-color                   | tertiary-020
-text-secondary-color         | primary-1-060
-text-color-inverse           | tertiary-040
-text-secondary-color-inverse | primary-1-010
-link-color                   | secondary-1-100
-link-hover-color             | darken($link-color, 5%)
-
-#### Border Colors
-These are the colors that we use for borders.
-
-Variation            | Palette Color
----------------------|--------------
-border-color         | primary-1-020
-border-color-inverse | primary-1-080
 </vue-markdown>
+<brand-colors/>
+</div>
 `,
   })),
 );
 
-story = storiesOf('1. Design System|3. Typography', module) as any;
+story = storiesOf('Design System|Typography', module) as any;
 
 story.addParameters({ options: { showAddonPanel: false } });
 
@@ -169,39 +107,38 @@ story.add(
     components: { VueMarkdown },
     template: `<vue-markdown>
 ## Typography
-Barlow is the standard type face for the Design System blueprint.
+Inter is the standard type face for the Design System blueprint.
 
 ### Font Weights
 Variable             | Weight
 ---------------------|-------
-$font-weight-thin    | 100
-$font-weight-regular | 300
-$font-weight-medium  | 500
-$font-weight-bold    | 700
+$font-weight-light   | 200
+$font-weight-regular | 400
+$font-weight-bold    | 600
 
 ### Font Sizes
 Level          | Font-size   | Font-weight
 ---------------|-------------|------------
-Small Text     | 80%         | $font-weight-regular
-Paragraph      | 1.6rem      | $font-weight-regular
-H1             | 4.8rem      | $font-weight-medium
-H2             | 3.2rem      | $font-weight-medium
-H3             | 2.4rem      | $font-weight-medium
-H4             | 2rem        | $font-weight-medium
-H5             | 1.6rem      | $font-weight-medium
-H4             | 1.6rem      | $font-weight-bold
+Small Text     | 80%         | $font-weight-light
+Paragraph      | 1.6rem      | $font-weight-light
+H1             | 4.8rem      | $font-weight-regular
+H2             | 3.2rem      | $font-weight-regular
+H3             | 2.4rem      | $font-weight-regular
+H4             | 2rem        | $font-weight-regular
+H5             | 1.6rem      | $font-weight-regular
+H4             | 1.6rem      | $font-weight-regular
 
 ### Line heights
 Line height is measured by taking the font size and adding 0.8rem. 
 
 ### List Style
-Lists are indented by 8px with an additional 0.8rem between the bullet and content.
+Lists are indented by 1.6rem.
 </vue-markdown>
 `,
   })),
 );
 
-story = storiesOf('1. Design System|4. Layout', module) as any;
+story = storiesOf('Design System|Layout', module) as any;
 
 story.addParameters({ options: { showAddonPanel: false } });
 
@@ -226,15 +163,28 @@ VueGridRow    | Row that is always 100% width and will be stacked on the page
 VueGridItem   | Item in the row that will be distributed equally on the page 
 
 ### Spacing
-To keep the spacing consistent we have one variable \`$space-unit\` that is used for spacings,
-you can multiply or divide this value as you want.
-The default value in the blueprint is \`0.8rem\`.
+To keep the spacing consistent we have a couple of variables with the prefix \`$space-\`
+
+Variable   | Space in pixel
+-----------|---------------
+$space-2   |   2px
+$space-4   |   4px
+$space-8   |   8px
+$space-12  |  12px
+$space-16  |  16px
+$space-20  |  20px
+$space-24  |  24px
+$space-32  |  32px
+$space-40  |  40px
+$space-48  |  48px
+$space-52  |  52px
+$space-84  |  84px
 </vue-markdown>
 `,
   })),
 );
 
-story = storiesOf('1. Design System|5. Break points', module) as any;
+story = storiesOf('Design System|Break points', module) as any;
 
 story.addParameters({ options: { showAddonPanel: false } });
 

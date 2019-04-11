@@ -32,11 +32,11 @@ export default {
 
   strong {
     display: block;
-    font-weight: $font-weight-medium;
+    font-weight: $font-weight-regular;
     font-size: $sidebar-group-font-size;
     border-bottom: $sidebar-group-border-bottom;
-    padding-bottom: $space-unit * 0.5;
-    margin-bottom: $space-unit * 2;
+    padding-bottom: $space-4;
+    margin-bottom: $space-12;
   }
 }
 </style>

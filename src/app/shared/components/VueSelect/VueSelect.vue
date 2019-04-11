@@ -13,7 +13,7 @@
       v-bind="$attrs"
       v-on="handlers"
     >
-      <option v-for="option in options" :value="option.value" :selected="isSelected(option)">
+      <option v-for="(option, idx) in options" :key="idx" :value="option.value" :selected="isSelected(option)">
         {{ option.label }}
       </option>
     </select>
@@ -182,8 +182,8 @@ export default {
 
 .icon {
   position: absolute;
-  right: $space-unit * 3;
-  top: $space-unit * 1.5;
+  right: $space-20;
+  top: $space-12;
   height: auto;
   width: auto;
 

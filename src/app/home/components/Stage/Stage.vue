@@ -5,7 +5,8 @@
     <vue-grid>
       <vue-grid-row>
         <vue-grid-item class="vueGridItem">
-          <vue-headline level="1" :class="$style.title">vue-starter</vue-headline>
+          <img src="logo.png" alt="vuesion" />
+          <vue-headline level="1">vuesion</vue-headline>
           <div :class="$style.subTitle">
             {{
               $t(
@@ -14,12 +15,14 @@
             }}
           </div>
 
+          <br />
+
           <a
             :class="$style.github"
-            href="https://github.com/devCrossNet/vue-starter"
+            href="https://github.com/vuesion/vuesion"
             target="_blank"
             rel="noopener"
-            aria-label="github repository"
+            aria-label="vuesion github repository"
           >
             <vue-icon-github />
           </a>
@@ -30,12 +33,12 @@
 </template>
 
 <script lang="ts">
-import { CircleAnimation } from '../../shared/animations/CircleAnimation';
-import VueGrid from '../../shared/components/VueGrid/VueGrid.vue';
-import VueGridRow from '../../shared/components/VueGridRow/VueGridRow.vue';
-import VueGridItem from '../../shared/components/VueGridItem/VueGridItem.vue';
-import VueIconGithub from '../../shared/components/icons/VueIconGithub/VueIconGithub.vue';
-import VueHeadline from '../../shared/components/VueHeadline/VueHeadline.vue';
+import { CircleAnimation } from '../../../shared/animations/CircleAnimation';
+import VueGrid from '@components/VueGrid/VueGrid.vue';
+import VueGridRow from '@components/VueGridRow/VueGridRow.vue';
+import VueGridItem from '@components/VueGridItem/VueGridItem.vue';
+import VueIconGithub from '@components/icons/VueIconGithub/VueIconGithub.vue';
+import VueHeadline from '@components/VueHeadline/VueHeadline.vue';
 
 export default {
   components: { VueHeadline, VueIconGithub, VueGridItem, VueGridRow, VueGrid },
@@ -89,11 +92,23 @@ export default {
   overflow: hidden;
   position: relative;
   text-align: center;
-  color: $brand-text-color-inverse;
-  background: $secondary-1-100;
+  text-shadow: 0 0 5px rgba(15, 15, 15, 0.4);
+  padding-top: $space-84;
+
+  img {
+    max-width: 12.8rem;
+  }
+
+  h1 {
+    margin-bottom: $space-32;
+    font-weight: $font-weight-light;
+  }
 
   @include mediaMin(tabletPortrait) {
     min-height: 50vh;
+    img {
+      max-width: 25.6rem;
+    }
   }
 }
 
@@ -110,58 +125,16 @@ export default {
   }
 }
 
-.title,
-.subTitle,
-.github {
-  text-shadow: 0 5px 10px rgba(0, 0, 0, 0.33);
-  position: relative;
-}
-
-.title {
-  top: $space-unit * 14;
-
-  @include mediaMin(tabletPortrait) {
-    top: $space-unit * 24;
-  }
-
-  @include mediaMin(tabletLandscape) {
-    top: $space-unit * 26;
-  }
-}
-
-.subTitle {
-  top: $space-unit * 13;
-
-  @include mediaMin(tabletPortrait) {
-    top: $space-unit * 22;
-  }
-
-  @include mediaMin(tabletLandscape) {
-    top: $space-unit * 24;
-  }
-}
-
 .github {
   font-size: $font-size-h1;
-  top: $space-unit * 17;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   display: inline-block;
   background: $brand-bg-color;
   transition: $button-transition;
   transition-property: box-shadow, background-color;
   color: $brand-link-color;
-  padding: $button-padding;
 
   &:hover {
     box-shadow: $button-active-shadow;
-  }
-
-  @include mediaMin(tabletPortrait) {
-    top: $space-unit * 25;
-  }
-
-  @include mediaMin(tabletLandscape) {
-    top: $space-unit * 39;
   }
 
   i {

@@ -51,21 +51,22 @@
       <table>
         <thead>
           <tr>
-            <td v-for="weekday in weekdays" :class="$style.disabledDay">
+            <td v-for="(weekday, idx) in weekdays" :key="`weekday-${idx}`" :class="$style.disabledDay">
               <span>{{ weekday }}</span>
             </td>
           </tr>
         </thead>
 
         <tbody>
-          <tr v-for="(days, index) in calendar" :key="index">
+          <tr v-for="(days, daysIdx) in calendar" :key="`days-${daysIdx}`">
             <td
               :class="[
                 day.currentDay ? $style.currentDay : '',
                 day.disabled ? $style.disabledDay : '',
                 day.selected ? $style.selectedDay : '',
               ]"
-              v-for="day in days"
+              v-for="(day, dayIdx) in days"
+              :key="`day-${dayIdx}`"
               :tabindex="day.day ? 0 : null"
               :aria-label="day.day ? $d(new Date(currentYear, currentMonth, day.day), 'calendarLabel') : null"
               @keydown.enter.stop.prevent="setByDay(day)"
@@ -83,8 +84,8 @@
       <div
         :class="[year.selected ? $style.selected : '']"
         :id="`${year.year}-calendar-year`"
-        :key="year.year"
         v-for="year in years"
+        :key="year.year"
         @click="setByYear(year.year)"
         @keypress.enter.space.stop.prevent="setByYear(year.year)"
         :aria-label="year.year"
@@ -95,10 +96,8 @@
     </div>
 
     <div :class="$style.footer">
-      <vue-button @click.stop.prevent="onClose" color="primary" ghost>{{
-        $t('common.cancel' /* Cancel */)
-      }}</vue-button>
-      <vue-button @click.stop.prevent="onChange" color="secondary">{{ $t('common.ok' /* Ok */) }}</vue-button>
+      <vue-button @click.stop.prevent="onClose" ghost>{{ $t('common.cancel' /* Cancel */) }}</vue-button>
+      <vue-button @click.stop.prevent="onChange" color="primary">{{ $t('common.ok' /* Ok */) }}</vue-button>
     </div>
   </div>
 </template>
@@ -375,10 +374,12 @@ export default {
   padding: $calendar-header-padding;
   background: $calendar-header-bg;
   text-shadow: $calendar-header-text-shadow;
+
   cursor: pointer;
 
-  div {
+  * {
     margin: 0;
+    font-weight: $calendar-header-font-weight;
   }
 }
 
@@ -415,15 +416,7 @@ export default {
 
         span {
           position: relative;
-          top: $space-unit - 0.1;
-
-          @include mediaMin(tabletPortrait) {
-            top: 15%;
-          }
-
-          @include mediaMin(largeDesktop) {
-            top: 17%;
-          }
+          top: 20%;
         }
       }
     }
@@ -432,14 +425,15 @@ export default {
 
 .date {
   display: flex;
+  height: $space-32;
+  flex-direction: row;
 }
 
 .arrow {
-  height: $space-unit * 4;
   flex: 1 0 15%;
-  position: relative;
   cursor: pointer;
   background: $calendar-arrow-bg;
+  position: relative;
 
   &:hover {
     background: $calendar-arrow-hover-bg;
@@ -451,35 +445,32 @@ export default {
     transition: all 0.25s ease-in-out;
     position: absolute;
     background-color: $calendar-arrow-color;
-    width: 2px;
-    height: 13px;
-    top: 4px;
-    left: $space-unit * 2;
+    width: $space-2;
+    height: $space-12;
+    left: 50%;
+    margin-left: -($space-8 - $space-2);
+    top: $space-4;
   }
 
   &:before {
-    transform: translate(4px, 0) rotate(45deg);
+    transform: translate($space-4, 0) rotate(45deg);
   }
 
   &:after {
-    transform: translate(4px, 8px) rotate(135deg);
+    transform: translate($space-4, $space-8) rotate(135deg);
   }
 
   &:last-child {
-    text-align: right;
-
     &:before,
     &:after {
-      right: $space-unit * 3;
-      left: initial;
     }
 
     &:before {
-      transform: translate(4px, 0) rotate(-45deg);
+      transform: translate($space-4, 0) rotate(-45deg);
     }
 
     &:after {
-      transform: translate(4px, 8px) rotate(-135deg);
+      transform: translate($space-4, $space-8) rotate(-135deg);
     }
   }
 }
@@ -525,7 +516,7 @@ export default {
 
   div {
     cursor: pointer;
-    padding: $space-unit 0;
+    padding: $space-8 0;
     transition: background-color 0.15s;
 
     &:hover {
@@ -539,7 +530,7 @@ export default {
 }
 
 .footer {
-  padding: $space-unit * 2;
+  padding: $space-12;
   display: flex;
   justify-content: flex-end;
   border: $calendar-body-border;

@@ -25,7 +25,7 @@
 
     <figcaption>
       <ul aria-hidden="true" role="presentation">
-        <li v-for="circle in circles.reverse()">
+        <li v-for="(circle, idx) in circles.reverse()" :key="idx">
           <span :style="{ background: circle.color }"></span> {{ circle.roundedPercent }}% - {{ circle.label }} ({{
             circle.value
           }}
@@ -145,17 +145,17 @@ export default {
       top: 25%;
 
       li {
-        padding: $space-unit 0;
+        padding: $space-4 0;
         position: relative;
 
         span {
           position: absolute;
           display: inline-block;
-          height: $space-unit * 3;
-          width: $space-unit * 3;
+          height: $space-12;
+          width: $space-12;
           border-radius: 50%;
-          top: $space-unit;
-          left: $space-unit * -5;
+          top: $space-12;
+          left: -$space-32;
         }
       }
     }
@@ -163,7 +163,7 @@ export default {
 }
 
 .title {
-  margin: 0 0 $space-unit * 4 0;
+  margin: 0 0 $space-32 0;
   text-align: center;
 }
 
@@ -187,11 +187,11 @@ export default {
 }
 
 :export {
-  color1: $primary-2-100;
-  color2: $secondary-1-100;
-  color3: $secondary-2-100;
-  color4: $tertiary-1-100;
-  color5: $tertiary-2-100;
-  color6: $tertiary-3-100;
+  color1: palette-color-level('coral', 50);
+  color2: palette-color-level('blue', 50);
+  color3: palette-color-level('red', 50);
+  color4: palette-color-level('green', 50);
+  color5: palette-color-level('yellow', 50);
+  color6: palette-color-level('coral', 20);
 }
 </style>

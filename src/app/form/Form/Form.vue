@@ -16,16 +16,16 @@
 </template>
 
 <script lang="ts">
-import VueGrid from '../../shared/components/VueGrid/VueGrid.vue';
-import VueGridRow from '../../shared/components/VueGridRow/VueGridRow.vue';
-import VueGridItem from '../../shared/components/VueGridItem/VueGridItem.vue';
+import VueGrid from '@components/VueGrid/VueGrid.vue';
+import VueGridRow from '@components/VueGridRow/VueGridRow.vue';
+import VueGridItem from '@components/VueGridItem/VueGridItem.vue';
 import FormExample from '../FormExample/FormExample.vue';
-import VueHeadline from '../../shared/components/VueHeadline/VueHeadline.vue';
-import VueBreadcrumb from '../../shared/components/VueBreadcrumb/VueBreadcrumb.vue';
+import VueHeadline from '@components/VueHeadline/VueHeadline.vue';
+import VueBreadcrumb from '@components/VueBreadcrumb/VueBreadcrumb.vue';
 
 export default {
   metaInfo: {
-    title: 'vue-starter - Form Example',
+    title: 'vuesion - Form Example',
   },
   components: { VueBreadcrumb, VueHeadline, FormExample, VueGridItem, VueGridRow, VueGrid },
   computed: {},
@@ -41,6 +41,6 @@ export default {
 
 .form {
   padding-top: $nav-bar-height;
-  padding-bottom: $space-unit * 2;
+  padding-bottom: $space-12;
 }
 </style>
