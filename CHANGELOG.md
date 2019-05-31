@@ -1,3 +1,15 @@
+#### 3.2.2 (2019-05-30)
+
+##### Chores
+
+- update dependencies ([27d1b9a7](https://github.com/vuesion/vuesion/commit/27d1b9a78eecc3c82ce5ce4d23e094a9c37c0665))
+
+#### 3.2.1 (2019-05-30)
+
+##### Bug Fixes
+
+- **datepicker:** add methods to stories ([f057d3b0](https://github.com/vuesion/vuesion/commit/f057d3b0887ec81fa270bf2b4540808cc6094f49))
+
 ### 3.2.0 (2019-05-19)
 
 ##### Chores
